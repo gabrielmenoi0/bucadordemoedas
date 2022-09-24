@@ -42,15 +42,32 @@ class _HomeViewState extends State<HomeView> {
 //  List<ListPersonModel> model = [];
             /// passando informações para o modelo criado
             model = snapshot.data ?? model;
+
+            model.removeWhere((pessoa) => pessoa.id == "64");
+            model.add(ListPersonModel(
+              avatar:
+                  "https://pbs.twimg.com/profile_images/420370594/IMG_3253_400x400.JPG",
+              id: "99",
+              name: "Arnaldo",
+            ));
             model.sort(
               (a, b) => a.name!.compareTo(b.name!),
             );
+            model.forEach((pessoa) {
+              if (pessoa.id == "9") {
+                pessoa.avatar = null;
+              }
+            });
+
             return ListView.builder(
                 itemCount: model.length,
                 itemBuilder: (context, index) {
                   ListPersonModel item = model[index];
                   return ListTile(
-                    leading: Image.network(item.avatar ?? ""),
+                    leading: Image.network(
+                        errorBuilder: (context, error, stackTrace) {
+                      return Container();
+                    }, item.avatar ?? ""),
                     title: Text(item.name ?? ""),
                     trailing: Text(item.id ?? ""),
                   );
