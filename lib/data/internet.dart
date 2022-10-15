@@ -1,6 +1,7 @@
 import 'dart:io';
 
 class CheckInternet {
+  /// função para verificar internet através do metodo Ping no site do Google
   Future<bool> checkConnection() async {
     try {
       final result = await InternetAddress.lookup('google.com');

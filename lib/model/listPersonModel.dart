@@ -1,3 +1,5 @@
+/// classe que representa o Objeto "Pessoa", fazendo os metodos fromJson e ToJson -> https://javiercbk.github.io/json_to_dart/
+
 class ListPersonModel {
   String? createdAt;
   String? name;
